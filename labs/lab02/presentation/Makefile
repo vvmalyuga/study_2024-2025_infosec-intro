@@ -8,9 +8,10 @@ PDF_OPTIONS =
 PDF_FORMAT_OPTIONS = -t beamer --slide-level=2
 
 FILTERS += --citeproc
-# FILTERS += -F pandoc-crossref
-PDF_ENGINE += --pdf-engine=lualatex
+PDF_ENGINE += --pdf-engine=xelatex
 PDF_OPTIONS += --number-sections
+PDF_OPTIONS += -V mainfont="DejaVu Sans"
+PDF_OPTIONS += -V sansfont="DejaVu Sans"
 
 REVEALJS_THEME = beige
 
@@ -26,3 +27,4 @@ clean:
 	-@rm $(FILES) *~
 
 cleanall: clean
+
