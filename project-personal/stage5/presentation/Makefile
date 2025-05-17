@@ -11,11 +11,13 @@ FILTERS += --citeproc
 # FILTERS += -F pandoc-crossref
 PDF_ENGINE += --pdf-engine=lualatex
 PDF_OPTIONS += --number-sections
+LANGUAGE_SUPPORT = -V polyglossia-lang.name=russian -V polyglossia-lang.options=spelling=modern
+
 
 REVEALJS_THEME = beige
 
 %.pdf: %.md
-	-@pandoc "$<" $(FILTERS) $(PDF_ENGINE) $(PDF_OPTIONS) $(PDF_FORMAT_OPTIONS) -o "$@"
+	-@pandoc "$<" $(FILTERS) $(PDF_ENGINE) $(PDF_OPTIONS) $(PDF_FORMAT_OPTIONS) $(LANGUAGE_SUPPORT) -o "$@"
 
 %.html: %.md
 	-@pandoc "$<" --embed-resources --standalone -t revealjs -V theme=$(REVEALJS_THEME) -o "$@"
